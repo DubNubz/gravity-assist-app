@@ -58,6 +58,10 @@ const changelog = [{
     "Optimized every display for mobile users", "Changed display of information in Module Library for desktop users",
     "Gravity Assist tool links are now routed", "Added Eternal Heavens to Research Agreement Helper and Module Library",
     "Disabled double-click to zoom on buttons for mobile users"]
+}, {
+    version: "TEST",
+    release: "00000",
+    notes: ["This is a test server, the real deal is at https://gravityassist.xyz"]
 }
 ];
 

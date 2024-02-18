@@ -28,6 +28,10 @@ function convertInput (type, input) {
     let color;
 
     if (reverse) {
+        console.log("startIndex", startIndex);
+        console.log("props.Color", props.Color);
+        console.log("props.Color.colorPalette[startIndex]", props.Color.colorPalette[startIndex]);
+        console.log("props.Color.colorPalette.toReversed()[startIndex]", props.Color.colorPalette.toReversed()[startIndex]);
         color = props.Color.colorPalette.toReversed()[startIndex];
     } else {
         color = props.Color.colorPalette[startIndex];

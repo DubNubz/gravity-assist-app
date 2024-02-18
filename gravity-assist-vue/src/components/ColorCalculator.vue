@@ -32,8 +32,8 @@ function convertInput (type, input) {
         console.log("props.Color", Object(props.Color));
         console.log("props.Color.colorPalette", props.Color.colorPalette);
         console.log("props.Color.colorPalette[startIndex]", props.Color.colorPalette[startIndex]);
-        console.log("props.Color.colorPalette.toReversed()[startIndex]", props.Color.colorPalette.toReversed()[startIndex]);
-        color = props.Color.colorPalette.toReversed()[startIndex];
+        console.log("props.Color.colorPalette.toReversed()[startIndex]", props.Color.colorPalette.slice().reverse()[startIndex]);
+        color = props.Color.colorPalette.slice().reverse()[startIndex];
     } else {
         color = props.Color.colorPalette[startIndex];
     }

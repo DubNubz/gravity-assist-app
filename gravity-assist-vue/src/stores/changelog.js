@@ -60,7 +60,7 @@ const changelog = [{
     "Disabled double-click to zoom on buttons for mobile users"]
 }, {
     version: "TEST",
-    release: "00000",
+    release: "00001",
     notes: ["This is a test server, the real deal is at https://gravityassist.xyz"]
 }
 ];

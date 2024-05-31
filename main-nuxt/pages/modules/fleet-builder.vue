@@ -31,6 +31,11 @@ const selected = ref(false);
 
 let previousType: "Swarm" | "Tank" | "DPS" | "Custom" | undefined;
 
+useHead({
+    title: "Fleet Builder",
+    meta: [{ name: "description", content: "Create and design the fleet of your dreams using preset archetypes, or from your own imagination!" }]
+})
+
 function chooseOption (type: "Swarm" | "Tank" | "DPS" | "Custom") {
     if (previousType == type) {
         selected.value = false;

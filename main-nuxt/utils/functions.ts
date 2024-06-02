@@ -3,10 +3,14 @@ export function delay (ms: number) {
     return new Promise((executor: any) => setTimeout(executor, ms));
 }
   
-export function getRandomIntInclusive (min: number, max: number): number {
+export function getRandomIntInclusive (min: number, max: number) {
     const minCeiled: number = Math.ceil(min);
     const maxFloored: number = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
+export function getRandomItemFromArray (items: any[]) {
+  return items[getRandomIntInclusive(0, items.length - 1)];
 }
 
 export function compareObjectsInArray(obj1: Record<any, any>, obj2: Record<any, any>) {

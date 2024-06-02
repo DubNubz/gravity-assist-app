@@ -41,6 +41,9 @@ export type WeaponStats = {
     antiair: null | number;
     siege: null | number;
     hp: number;
+    medium_fighters_held?: number;
+    large_fighters_held?: number;
+    corvettes_held?: number;
 }
 
 export type ArmorStats = {
@@ -103,6 +106,7 @@ export type Ship = {
     title: string;
     img: string;
     type: "Fighter" | "Corvette" | "Frigate" | "Destroyer" | "Cruiser" | "Battlecruiser" | "Auxiliary Ship" | "Carrier";
+    fighter_type?: "Small" | "Medium" | "Large";
     variant: "A" | "B" | "C" | "D";
     variant_name: string;
     manufacturer: ShipManufacturer;
@@ -110,6 +114,11 @@ export type Ship = {
     scope: ShipScope;
     weight: number;
     row: "Front" | "Middle" | "Back";
+    cp: number;
+    maxInFleet: number;
+    medium_fighters_held?: number;
+    large_fighters_held?: number;
+    corvettes_held?: number;
     modules?: (Module | UnknownModule)[];
 }
 
@@ -160,6 +169,7 @@ export const shipData: Ship[] = [{
         title: "Pulse Attacker",
         img: "/ships/at021_a.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "A",
         variant_name: "Pulse Cannon Type",
         manufacturer: "Dawn Accord",
@@ -167,11 +177,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 15
     }, {
         name: "AT021",
         title: "Tactical Attacker",
         img: "/ships/at021_b.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "B",
         variant_name: "Interference Type",
         manufacturer: "Dawn Accord",
@@ -179,11 +192,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 15
     }, {
         name: "AT021",
         title: "Heavy Attacker",
         img: "/ships/at021_c.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "C",
         variant_name: "Multi-Role Type",
         manufacturer: "Dawn Accord",
@@ -191,11 +207,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 15
     }, {
         name: "B192 Newland",
         title: "Heavy Attacker",
         img: "/ships/b192newland.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "A",
         variant_name: "Multi-Role Type",
         manufacturer: "Jupiter Industry",
@@ -203,11 +222,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "BR050",
         title: "Standard Bomber",
         img: "/ships/br050_a.png",
         type: "Fighter",
+        fighter_type: "Large",
         variant: "A",
         variant_name: "Anti-Ship Type",
         manufacturer: "Dawn Accord",
@@ -215,11 +237,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "BR050",
         title: "Multi-Role Bomber",
         img: "/ships/br050_b.png",
         type: "Fighter",
+        fighter_type: "Large",
         variant: "B",
         variant_name: "Defense Type",
         manufacturer: "Dawn Accord",
@@ -227,11 +252,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "BR050",
         title: "Torpedo Bomber",
         img: "/ships/br050_c.png",
         type: "Fighter",
+        fighter_type: "Large",
         variant: "C",
         variant_name: "Torpedo Type",
         manufacturer: "Dawn Accord",
@@ -239,11 +267,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Balancer Anderson SC020",
         title: "Scout",
         img: "/ships/sc020.png",
         type: "Fighter",
+        fighter_type: "Small",
         variant: "A",
         variant_name: "Interference Type",
         manufacturer: "Antonios",
@@ -251,11 +282,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Bullfrog",
         title: "Dual-Purpose Bomber",
         img: "/ships/bullfrog.png",
         type: "Fighter",
+        fighter_type: "Large",
         variant: "A",
         variant_name: "Siege Type",
         manufacturer: "NOMA Shipping",
@@ -263,11 +297,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Hayreddin's Loyal",
         title: "Pulsar Fighter",
         img: "/ships/hayreddinsLoyal.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "A",
         variant_name: "Special Type",
         manufacturer: "Empty",
@@ -275,11 +312,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 1,
+        maxInFleet: 8
     }, {
         name: "Janbiya Aer410",
         title: "Assault Attacker",
         img: "/ships/janbiyaAer410.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "A",
         variant_name: "Anti-Ship Type",
         manufacturer: "Jupiter Industry",
@@ -287,11 +327,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Mistral",
         title: "Combat Attacker",
         img: "/ships/mistral.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "A",
         variant_name: "Anti-Aircraft Type",
         manufacturer: "Antonios",
@@ -299,11 +342,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "SC002",
         title: "Quantum Scout",
         img: "/ships/sc002.png",
         type: "Fighter",
+        fighter_type: "Small",
         variant: "A",
         variant_name: "Generic Type",
         manufacturer: "Dawn Accord",
@@ -311,11 +357,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 15
     }, {
         name: "Sandrake",
         title: "Atmospheric Interceptor",
         img: "/ships/sandrake.png",
         type: "Fighter",
+        fighter_type: "Small",
         variant: "A",
         variant_name: "Dual-Purpose Type",
         manufacturer: "NOMA Shipping",
@@ -323,11 +372,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Spore A404",
         title: "Light Fighter",
         img: "/ships/sporeA404.png",
         type: "Fighter",
+        fighter_type: "Small",
         variant: "A",
         variant_name: "Anti-Aircraft Type",
         manufacturer: "Jupiter Industry",
@@ -335,11 +387,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Stingray",
         title: "Torpedo Bomber",
         img: "/ships/stingray.png",
         type: "Fighter",
+        fighter_type: "Large",
         variant: "A",
         variant_name: "Stealth Type",
         manufacturer: "Jupiter Industry",
@@ -347,11 +402,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Strix A100",
         title: "Joint Attacker",
         img: "/ships/strixA100.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "A",
         variant_name: "Anti-Ship Type",
         manufacturer: "NOMA Shipping",
@@ -359,11 +417,14 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Vitas A021",
         title: "Heavy Attacker",
         img: "/ships/vitasA021.png",
         type: "Fighter",
+        fighter_type: "Medium",
         variant: "A",
         variant_name: "Anti-Ship Type",
         manufacturer: "Antonios",
@@ -371,11 +432,14 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "Vitas-B010",
         title: "Bomber",
         img: "/ships/vitasB010.png",
         type: "Fighter",
+        fighter_type: "Large",
         variant: "A",
         variant_name: "Anti-Ship Type",
         manufacturer: "Antonios",
@@ -383,6 +447,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 1,
+        maxInFleet: 10
     }, {
         name: "CV-II003",
         title: "Light Corvette",
@@ -395,6 +461,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 2,
+        maxInFleet: 15
     }, {
         name: "CV-M011",
         title: "Heavy Missile Corvette",
@@ -407,6 +475,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 2,
+        maxInFleet: 15
     }, {
         name: "CV-M011",
         title: "Heavy Cannon Corvette",
@@ -419,6 +489,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 2,
+        maxInFleet: 15
     }, {
         name: "CV-M011",
         title: "High-Speed Missile Corvette",
@@ -431,6 +503,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Front",
+        cp: 2,
+        maxInFleet: 15
     }, {
         name: "CV-T800",
         title: "Pulsar Corvette",
@@ -443,6 +517,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 2,
+        maxInFleet: 15
     }, {
         name: "Cellular Defender",
         title: "Heavy Torpedo Corvette",
@@ -455,6 +531,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Front",
+        cp: 2,
+        maxInFleet: 10
     }, {
         name: "Nebula Chaser",
         title: "Heavy Corvette",
@@ -467,6 +545,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 2,
+        maxInFleet: 10
     }, {
         name: "Nebula Chaser",
         title: "Pulsar Corvette",
@@ -479,6 +559,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 2,
+        maxInFleet: 10
     }, {
         name: "RedBeast 7-13",
         title: "Missile Corvette",
@@ -491,6 +573,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 2,
+        maxInFleet: 10
     }, {
         name: "S-Levy 9",
         title: "Heavy Torpedo Escort Corvette",
@@ -503,6 +587,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Front",
+        cp: 2,
+        maxInFleet: 10
     }, {
         name: "Silent Assassin",
         title: "Armored Corvette",
@@ -515,6 +601,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 2,
+        maxInFleet: 10
     }, {
         name: "Void Elfin",
         title: "Stealth Missile Corvette",
@@ -527,6 +615,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 2,
+        maxInFleet: 10
     }, {
         name: "Carilion",
         title: "Recon Frigate",
@@ -539,6 +629,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Carilion",
         title: "Heavy Cannon Frigate",
@@ -551,6 +643,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "Carilion",
         title: "Special Frigate",
@@ -563,6 +657,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "FG300",
         title: "Multi-Role Frigate",
@@ -575,6 +671,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 3,
+        maxInFleet: 15
     }, {
         name: "FG300",
         title: "Armored Frigate",
@@ -587,6 +685,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 3,
+        maxInFleet: 15
     }, {
         name: "FG300",
         title: "Recon Frigate",
@@ -599,6 +699,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 3,
+        maxInFleet: 15
     }, {
         name: "Mare Imbrium",
         title: "Assault Frigate",
@@ -611,6 +713,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "Mare Imbrium",
         title: "Experimental Pulse Cannon Frigate",
@@ -623,6 +727,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Middle",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "Mare Nubium",
         title: "Light Landing Ship",
@@ -635,6 +741,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Mare Nubium",
         title: "Anti-Aircraft Frigate",
@@ -647,6 +755,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Middle",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Mare Serenitatis",
         title: "Heavy Frigate",
@@ -659,6 +769,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Back",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "Mare Serenitatis",
         title: "Missile Frigate",
@@ -671,6 +783,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Back",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "Mare Serenitatis",
         title: "Anti-Aircraft Frigate",
@@ -683,6 +797,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Back",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "Mare Tranquillitatis",
         title: "Missile Frigate",
@@ -695,6 +811,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Middle",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Mare Tranquillitatis",
         title: "Pulse Cannon Frigate",
@@ -707,6 +825,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Mare Tranquillitatis",
         title: "Interceptor Frigate",
@@ -719,6 +839,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Middle",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "NOMA M470",
         title: "Heavy Landing Ship",
@@ -731,6 +853,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "NOMA M470",
         title: "Support Frigate",
@@ -743,6 +867,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "NOMA M470",
         title: "Anti-Aircraft Frigate",
@@ -755,6 +881,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "Reliat",
         title: "Rapid Torpedo Frigate",
@@ -767,6 +895,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Middle",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Reliat",
         title: "Tactical Torpedo Frigate",
@@ -779,6 +909,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Middle",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Reliat",
         title: "Stealth Frigate",
@@ -791,6 +923,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Middle",
+        cp: 4,
+        maxInFleet: 10
     }, {
         name: "Ruby",
         title: "Heavy Railgun Frigate",
@@ -803,6 +937,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Middle",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "Ruby",
         title: "Experimental Ion Cannon Frigate",
@@ -815,6 +951,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Middle",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "Ruby",
         title: "Defensive Frigate",
@@ -827,6 +965,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Front",
+        cp: 5,
+        maxInFleet: 10
     }, {
         name: "XenoStinger",
         title: "Tactical Frigate",
@@ -839,6 +979,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 5,
         row: "Back",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "XenoStinger",
         title: "Defensive Frigate",
@@ -851,6 +993,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 5,
         row: "Back",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "AC721",
         title: "Heavy Logistics Destroyer",
@@ -863,6 +1007,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 8,
+        maxInFleet: 15
     }, {
         name: "AC721",
         title: "Heavy Missile Destroyer",
@@ -875,6 +1021,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Back",
+        cp: 8,
+        maxInFleet: 15
     }, {
         name: "AC721",
         title: "Heavy Dual-Purpose Assault Ship",
@@ -887,6 +1035,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 8,
+        maxInFleet: 15,
+        corvettes_held: 2
     }, {
         name: "Aldabra",
         title: "Heavy Cannon Destroyer",
@@ -899,6 +1050,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 8,
+        maxInFleet: 10
     }, {
         name: "Aldabra",
         title: "Heavy Assault Destroyer",
@@ -911,6 +1064,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 8,
+        maxInFleet: 10
     }, {
         name: "Ceres",
         title: "Aircraft Destroyer",
@@ -923,6 +1078,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 8,
+        maxInFleet: 10,
+        medium_fighters_held: 2
     }, {
         name: "Ceres",
         title: "Support Destroyer",
@@ -935,6 +1093,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 8,
+        maxInFleet: 10
     }, {
         name: "Ceres",
         title: "Tactical Destroyer",
@@ -947,6 +1107,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 8,
+        maxInFleet: 10
     }, {
         name: "Eris I",
         title: "Maneuver Assault Destroyer",
@@ -959,6 +1121,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 7,
+        maxInFleet: 10
     }, {
         name: "Eris I",
         title: "Heavy Cannon Destroyer",
@@ -971,6 +1135,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 7,
+        maxInFleet: 10
     }, {
         name: "Eris I",
         title: "Armored Destroyer",
@@ -983,6 +1149,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Front",
+        cp: 7,
+        maxInFleet: 10
     }, {
         name: "Guardian",
         title: "Support Destroyer",
@@ -995,6 +1163,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Middle",
+        cp: 9,
+        maxInFleet: 10
     }, {
         name: "Guardian",
         title: "Dual-Purpose Assault Ship",
@@ -1007,6 +1177,9 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Back",
+        cp: 9,
+        maxInFleet: 10,
+        corvettes_held: 2
     }, {
         name: "Guardian",
         title: "Experimental Pulse Assault Ship",
@@ -1019,6 +1192,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 9,
+        maxInFleet: 10
     }, {
         name: "Quaoar",
         title: "Railgun Destroyer",
@@ -1031,6 +1206,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "Quaoar",
         title: "Torpedo Destroyer",
@@ -1043,6 +1220,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Middle",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "Taurus",
         title: "Pulse Cannon Destroyer",
@@ -1055,6 +1234,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 8,
+        maxInFleet: 10
     }, {
         name: "Taurus",
         title: "Assault Destroyer",
@@ -1067,6 +1248,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 8,
+        maxInFleet: 10
     }, {
         name: "Taurus",
         title: "Defensive Destroyer",
@@ -1079,6 +1262,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 8,
+        maxInFleet: 10
     }, {
         name: "Tundra",
         title: "Tactical Destroyer",
@@ -1091,6 +1276,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 9,
+        maxInFleet: 10
     }, {
         name: "Tundra",
         title: "Aircraft Destroyer",
@@ -1103,6 +1290,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 9,
+        maxInFleet: 10,
+        medium_fighters_held: 2
     }, {
         name: "Winged Hussar",
         title: "Light Missile Destroyer",
@@ -1115,6 +1305,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Middle",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "Winged Hussar",
         title: "Integrated Missile Destroyer",
@@ -1127,6 +1319,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Back",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "Winged Hussar",
         title: "Area-Denial Anti-Aircraft Destroyer",
@@ -1139,6 +1333,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 6,
+        maxInFleet: 10
     }, {
         name: "CAS066",
         title: "Generic Cruiser",
@@ -1151,6 +1347,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Front",
+        cp: 18,
+        maxInFleet: 12
     }, {
         name: "CAS066",
         title: "Artillery Cruiser",
@@ -1163,6 +1361,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 18,
+        maxInFleet: 12
     }, {
         name: "CAS066",
         title: "Aircraft Cruiser",
@@ -1175,6 +1375,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Middle",
+        cp: 18,
+        maxInFleet: 12,
+        corvettes_held: 2
     }, {
         name: "CAS066",
         title: "Auxiliary Cruiser",
@@ -1187,6 +1390,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Middle",
+        cp: 18,
+        maxInFleet: 12
     }, {
         name: "Callisto",
         title: "Cluster Torpedo Raid Ship",
@@ -1199,6 +1404,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 2,
         row: "Back",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Callisto",
         title: "Heavy Torpedo Raid Ship",
@@ -1211,6 +1418,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 2,
         row: "Back",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Callisto",
         title: "Heavy UAV Cruiser",
@@ -1223,6 +1432,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 2,
         row: "Back",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Chimera",
         title: "Heavy Cruiser",
@@ -1235,6 +1446,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Chimera",
         title: "Cannon Cruiser",
@@ -1247,6 +1460,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Chimera",
         title: "Defensive Cruiser",
@@ -1259,6 +1474,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Middle",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Conamara Chaos",
         title: "Railgun Cruiser",
@@ -1271,6 +1488,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Back",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Conamara Chaos",
         title: "High-Speed Plasma Cruiser",
@@ -1283,6 +1502,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Back",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Io",
         title: "Assault Ion Cannon Cruiser",
@@ -1295,6 +1516,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 18,
+        maxInFleet: 8
     }, {
         name: "Io",
         title: "High-Speed Ion Cannon Cruiser",
@@ -1307,6 +1530,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 18,
+        maxInFleet: 8
     }, {
         name: "Io",
         title: "Siege Ion Cannon Cruiser",
@@ -1319,6 +1544,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
+        cp: 18,
+        maxInFleet: 8
     }, {
         name: "Jaeger",
         title: "Heavy Aircraft Cruiser",
@@ -1331,6 +1558,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 5,
         row: "Back",
+        cp: 18,
+        maxInFleet: 8,
+        corvettes_held: 4
     }, {
         name: "Jaeger",
         title: "Heavy Cannon Cruiser",
@@ -1343,6 +1573,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Back",
+        cp: 18,
+        maxInFleet: 8
     }, {
         name: "KCCPV2.0",
         title: "Light Attack Cruiser",
@@ -1355,6 +1587,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 10,
         row: "Back",
+        cp: 16,
+        maxInFleet: 12
     }, {
         name: "KCCPV2.0",
         title: "Light Pulse Attack Cruiser",
@@ -1367,6 +1601,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 16,
+        maxInFleet: 12
     }, {
         name: "KCCPV2.0",
         title: "Light Railgun Cruiser",
@@ -1379,6 +1615,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Middle",
+        cp: 16,
+        maxInFleet: 12
     }, {
         name: "KCCPV2.0",
         title: "Light Aircraft Cruiser",
@@ -1391,6 +1629,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 16,
+        maxInFleet: 12,
+        large_fighters_held: 2
     }, {
         name: "Light Cone",
         title: "Multi-Role Missile Cruiser Cruiser",
@@ -1403,6 +1644,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Middle",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Light Cone",
         title: "Area-Denial Anti-Aircraft Cruiser",
@@ -1415,6 +1658,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Middle",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Light Cone",
         title: "Offensive Missile Cruiser",
@@ -1427,6 +1672,8 @@ export const shipData: Ship[] = [{
         scope: "Projectile Weapon",
         weight: 5,
         row: "Middle",
+        cp: 20,
+        maxInFleet: 8
     }, {
         name: "Ranger",
         title: "Comprehensive Warfare Cruiser",
@@ -1439,6 +1686,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 10,
         row: "Back",
+        cp: 18,
+        maxInFleet: 8
     }, {
         name: "Ranger",
         title: "Heavy Ion Cannon Cruiser",
@@ -1451,6 +1700,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 2,
         row: "Back",
+        cp: 18,
+        maxInFleet: 8
     }, {
         name: "Predator",
         title: "Aircraft Cruiser",
@@ -1463,6 +1714,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 18,
+        maxInFleet: 8,
+        large_fighters_held: 4
     }, {
         name: "Predator",
         title: "Tactical Aircraft Cruiser",
@@ -1475,6 +1729,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 18,
+        maxInFleet: 8,
+        large_fighters_held: 4
     }, {
         name: "Predator",
         title: "Anti-Aircraft Cruiser",
@@ -1487,6 +1744,9 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 10,
         row: "Back",
+        cp: 18,
+        maxInFleet: 8,
+        large_fighters_held: 4
     }, {
         name: "Constantine the Great",
         title: "Multi-Role Battlecruiser",
@@ -1499,6 +1759,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 2,
         row: "Middle",
+        cp: 35,
+        maxInFleet: 6,
         modules: [{
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -1729,7 +1991,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 18000
+                hp: 18000,
+                medium_fighters_held: 2
             },
             subsystems: [{
                 type: "hanger",
@@ -1842,6 +2105,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 2,
         row: "Middle",
+        cp: 32,
+        maxInFleet: 6,
         modules: [{
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -2157,6 +2422,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 2,
         row: "Front",
+        cp: 35,
+        maxInFleet: 6,
         modules: [{
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -2345,7 +2612,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 23850
+                hp: 23850,
+                corvettes_held: 3
             },
             subsystems: [{
                 type: "hanger",
@@ -2452,6 +2720,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Middle",
+        cp: 28,
+        maxInFleet: 6,
         modules: [{
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -2633,7 +2903,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 15300
+                hp: 15300,
+                medium_fighters_held: 2
             },
             subsystems: [{
                 type: "hanger",
@@ -2735,6 +3006,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 2,
         row: "Middle",
+        cp: 35,
+        maxInFleet: 6,
         modules: [{
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -3039,6 +3312,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 2,
         row: "Middle",
+        cp: 40,
+        maxInFleet: 2,
         modules: [{
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -3215,7 +3490,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 19350
+                hp: 19350,
+                large_fighters_held: 2
             },
             subsystems: [{
                 type: "hanger",
@@ -3246,7 +3522,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 19350
+                hp: 19350,
+                corvettes_held: 3
             },
             subsystems: [{
                 type: "hanger",
@@ -3309,6 +3586,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 5,
         row: "Back",
+        cp: 40,
+        maxInFleet: 2,
         modules: [{
             type: "known",
             img: "/weapons/icons/jamming.png",
@@ -3490,7 +3769,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 21500
+                hp: 21500,
+                medium_fighters_held: 2
             },
             subsystems: [{
                 type: "hanger",
@@ -3556,7 +3836,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 21500
+                hp: 21500,
+                corvettes_held: 3
             },
             subsystems: [{
                 type: "hanger",
@@ -3580,6 +3861,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 2,
         row: "Back",
+        cp: 40,
+        maxInFleet: 5,
         modules: [{
             type: "known",
             img: "/weapons/icons/aircraft.png",
@@ -3590,7 +3873,9 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 23850
+                hp: 23850,
+                large_fighters_held: 5,
+                corvettes_held: 3
             },
             subsystems: [{
                 type: "hanger",
@@ -3619,7 +3904,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 23850
+                hp: 23850,
+                large_fighters_held: 5
             },
             subsystems: [{
                 type: "hanger",
@@ -3652,7 +3938,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 23850
+                hp: 23850,
+                large_fighters_held: 8
             },
             subsystems: [{
                 type: "hanger",
@@ -3760,7 +4047,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 23850
+                hp: 23850,
+                corvettes_held: 3
             },
             subsystems: [{
                 type: "hanger",
@@ -3805,6 +4093,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 2,
         row: "Back",
+        cp: 40,
+        maxInFleet: 5,
         modules: [{
             type: "known",
             img: "/weapons/icons/aircraft.png",
@@ -3815,7 +4105,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 24500
+                hp: 24500,
+                medium_fighters_held: 3
             },
             subsystems: [{
                 type: "hanger",
@@ -3990,6 +4281,8 @@ export const shipData: Ship[] = [{
         scope: "Direct-Fire Weapon",
         weight: 2,
         row: "Back",
+        cp: 40,
+        maxInFleet: 5,
         modules: [{
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -4066,7 +4359,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 25200
+                hp: 25200,
+                large_fighters_held: 6
             },
             subsystems: [{
                 type: "hanger",
@@ -4087,7 +4381,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 25200
+                hp: 25200,
+                corvettes_held: 6
             },
             subsystems: [{
                 type: "hanger",
@@ -4146,7 +4441,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 25200
+                hp: 25200,
+                medium_fighters_held: 4
             },
             subsystems: [{
                 type: "hanger",
@@ -4214,6 +4510,8 @@ export const shipData: Ship[] = [{
         scope: "Empty",
         weight: 2,
         row: "Middle",
+        cp: 45,
+        maxInFleet: 5,
         modules: [{
             type: "known",
             img: "/weapons/icons/aircraft.png",
@@ -4224,7 +4522,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 24750
+                hp: 24750,
+                corvettes_held: 6
             },
             subsystems: [{
                 type: "hanger",
@@ -4245,7 +4544,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 24750
+                hp: 24750,
+                large_fighters_held: 8
             },
             subsystems: [{
                 type: "hanger",
@@ -4384,7 +4684,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 24750
+                hp: 24750,
+                corvettes_held: 5
             },
             subsystems: [{
                 type: "hanger",
@@ -4405,7 +4706,8 @@ export const shipData: Ship[] = [{
                 antiship: null,
                 antiair: null,
                 siege: null,
-                hp: 24750
+                hp: 24750,
+                large_fighters_held: 5
             },
             subsystems: [{
                 type: "hanger",

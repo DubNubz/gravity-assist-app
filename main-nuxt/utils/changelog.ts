@@ -184,4 +184,10 @@ export const changelog: Changelog[] = [{
     "Buttons for navigating between pages is no longer in the header and instead in a new side bar", "Added better route navigation",
     "You can now freely select ships in Module Library without scrolling through the list", "Changelog and Contributors are now their own pages",
     "Some more images are now high-quality SVGs", "Even more major changes behind the scenes"]
+}, {
+    type: "release",
+    version: "1.3.1",
+    release: "June 1, 2024",
+    notes: ["Added Fleet Builder back with overhauled functionality", "Edited some icons for better usability on mobile devices",
+    "Fixed some share links not working"]
 }];

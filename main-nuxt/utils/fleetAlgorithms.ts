@@ -45,6 +45,7 @@ function swarmGenerator () {
 
                     if (changedShip.countInFleet) {
                         changedShip.countInFleet++;
+                        changedShip.childrenAircraft = []
                         const index = fleet.findIndex((ship2) => ship2.name == ship.name && ship2.variant == ship.variant);
                         fleet[index] = changedShip;
                     } else {

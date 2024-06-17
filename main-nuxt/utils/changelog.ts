@@ -194,12 +194,12 @@ export const changelog: Changelog[] = [{
     version: "1.3.1",
     release: "June 17, 2024",
     notes: ["Changed the primary font used on mobile devices", "Edited attribute descriptions of recently reworked attributes", 
-    "Added variant names to ship cards in RA Helper", "Changed the way RA Helper cards are displayed on mobile devices",
-    "Fixed a bug where share links would not work in some cases", "Changed the contents of the root page", "Changed the display of the cards on the home page"]
+    "Added variant names to ship cards in RA Helper", "Changed the way RA Helper cards are displayed on mobile devices", 
+    "Fixed a bug where share links would not work in some cases", "Changed the contents of the root page", "Changed the display of the cards on the home page", 
+    "Selecting a preset gradient in Color Generator will now close the dropdown", "Selecting an already selected equipment will now close the dropdown"]
 }, {
     type: "release",
     version: "1.3.X",
     release: "XXXXXX, 2024",
-    notes: ["Added Fleet Builder back with overhauled functionality", "Edited some icons for better usability on mobile devices",
-    "Fixed some share links not working"]
+    notes: ["Added Fleet Builder back with overhauled functionality", "Edited some icons for better usability on mobile devices"]
 }];
